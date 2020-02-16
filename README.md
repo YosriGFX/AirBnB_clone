@@ -15,7 +15,7 @@
 For this project, students are expected to look at this concept:
 
 AirBnB clone
-![alt text](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUZGDONYM4%2F20200216%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200216T143406Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=327bde0613d278435632ff0d35a5fb4f513f94d6404e7f8e15b67ea27d7d0eea)
+![alt text](https://i.ibb.co/GPsTnX2/65f4a1dd9c51265f49d0.png)
 
 # Background Context
 # Welcome to the AirBnB clone project! (The Holberton B&B)
