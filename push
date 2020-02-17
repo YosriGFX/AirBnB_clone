@@ -1,5 +1,6 @@
 rm -r __pycache__
 rm -r models/__pycache__
+rm -r models/engine/__pycache__
 rm -r tests/__pycache__
 chmod -R 777 *
 git add .
