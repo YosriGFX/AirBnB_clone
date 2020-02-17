@@ -1,4 +1,3 @@
-#!/bin/bash
 rm -r __pycache__
 rm -r models/__pycache__
 rm -r tests/__pycache__
