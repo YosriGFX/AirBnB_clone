@@ -1,0 +1,10 @@
+#!/bin/bash
+rm -r __pycache__
+rm -r models/__pycache__
+rm -r tests/__pycache__
+chmod -R 777 *
+git add .
+git commit -m "[init] - Yosri"
+git push
+clear
+echo "\n\n \t Done. Mr Yosri \t \n\n"
