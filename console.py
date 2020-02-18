@@ -68,6 +68,37 @@ class HBNBCommand(cmd.Cmd):
         except KeyError:
             print("** no instance found **")
 
+    def do_destroy(self, line):
+        '''show instances'''
+        try:
+            if line:
+                arg_line = line.split(" ")
+                ClassName = arg_line[0]
+                if ClassName in self.class_dic:
+                    if len(arg_line) > 1:
+                        current_id = arg_line[1]
+                        all_objs = storage.all()
+                        full_id = "{}.{}".format(ClassName, current_id)
+                        if full_id in all_objs:
+                            del all_objs[full_id]
+                            storage.save()
+                        else:
+                            raise KeyError
+                    else:
+                        raise IndexError
+                else:
+                    raise NameError
+            else:
+                raise SyntaxError
+        except SyntaxError:
+            print("** class name missing **")
+        except NameError:
+            print("** class doesn't exist **")
+        except IndexError:
+            print("** instance id missing **")
+        except KeyError:
+            print("** no instance found **")
+
     def help_quit(self):
         '''HELP_quit'''
         print("Quit command to exit the program\n")
@@ -81,6 +112,24 @@ class HBNBCommand(cmd.Cmd):
                 "Create Command to create a new instance of <Model_name>\
                 \nExample:\
                 \n> create <Model_name>\
+                \n"
+        )
+
+    def help_show(self):
+        print(
+                "Show Command to prints the string representation of an\
+                \ninstance based on the <Model_name> and <id>\
+                \nExample:\
+                \n> show <Model_name> <id>\
+                \n"
+        )
+
+    def help_destroy(self):
+        print(
+                "destroy Command to deletes an instance and save changes\
+                \nbased on the <Model_name> and <id>\
+                \nExample:\
+                \n> destroy <Model_name> <id>\
                 \n"
         )
 
