@@ -31,3 +31,13 @@ class FileStorage():
         json_exp = open(self.__file_path, "w")
         json_exp.write(json.dumps(dict_exp))
         json_exp.close()
+
+    def reload(self):
+        try:
+            json_reload = open(self.__file_path, "r")
+            json_old = json.loads(json_reload.read())
+            for key, value in json_old.items():
+                value = eval(value["__class__"])(**value)
+                self.__objects[key] = value
+        except FileNotFoundError:
+            pass
