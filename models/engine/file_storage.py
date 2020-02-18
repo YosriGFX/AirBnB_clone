@@ -4,6 +4,7 @@ from models.base_model import BaseModel
 import json
 from models.user import User
 
+
 class FileStorage():
     '''FileStorage Class'''
 
