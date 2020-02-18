@@ -3,6 +3,7 @@ from models.base_model import BaseModel
 import json
 '''File Storage file'''
 
+
 class FileStorage():
     '''FileStorage Class'''
 
@@ -24,8 +25,8 @@ class FileStorage():
     def save(self):
         '''save json'''
         dict_exp = {
-            obj: self.__objects[obj].to_dict()\
-            for obj in self.__objects.keys()
+                        obj: self.__objects[obj].to_dict()
+                        for obj in self.__objects.keys()
         }
         json_exp = open(self.__file_path, "w")
         json_exp.write(json.dumps(dict_exp))
