@@ -2,68 +2,58 @@
 '''test'''
 import unittest
 import os
-from models.base_model import BaseModel
+from models import *
 import pep8
 
 
 class TestBaseModel(unittest.TestCase):
-    '''test'''
+    '''Test for BaseModel class '''
+    def setUp(self):
+        '''sets up objects for testing'''
+        self.model1 = BaseModel()
+        self.model2 = BaseModel()
+        self.model2.save()
 
-    @classmethod
-    def setUpClass(cls):
-        '''test'''
-        cls.base = BaseModel()
-        cls.base.name = 'Kev'
-        cls.base.num = 20
+    def test_basic_setup(self):
+        '''test for to_json method of BaseModel class '''
+        self.assertTrue(hasattr(self.model1, 'id'))
+        self.assertTrue(hasattr(self.model1, '__class__'))
+        self.assertTrue(hasattr(self.model1, 'created_at'))
+        self.assertFalse(hasattr(self.model1, 'updated_at'))
+        self.assertTrue(hasattr(self.model2, 'updated_at'))
+        self.assertTrue(self.model1.id != self.model2.id)
+        m1c = self.model1.created_at
+        m2c = self.model2.created_at
+        self.assertTrue(m1c != m2c)
 
-    @classmethod
-    def teardown(cls):
-        '''test'''
-        del cls.base
+    def test_types(self):
+        '''testing attributes to ensure proper typing'''
+        self.assertIsInstance(self.model1.id, str)
+        self.assertIsInstance(self.model1.__class__, type)
+        self.assertIsInstance(self.model1.created_at, datetime.datetime)
+        self.model2.save()
+        self.assertIsInstance(self.model2.updated_at, datetime.datetime)
 
-    def tearDown(self):
-        '''test'''
-        try:
-            os.remove('file.json')
-        except Exception:
-            pass
+    def test_save(self):
+        '''testing whether save updates the updated_at attribute'''
+        self.model2.save()
+        m1u = self.model2.updated_at
+        self.model2.save()
+        m1u_saved = self.model2.updated_at
+        self.assertFalse(m1u == m1u_saved)
 
-    def test_pep8_BaseModel(self):
-        '''test'''
-        style = pep8.StyleGuide(quiet=True)
-        p = style.check_files(['models/base_model.py'])
-        self.assertEqual(p.total_errors, 0, 'fix pep8')
-
-    def test_checking_for_docstring_BaseModel(self):
-        '''test'''
-        self.assertIsNotNone(BaseModel.__doc__)
-        self.assertIsNotNone(BaseModel.__init__.__doc__)
-        self.assertIsNotNone(BaseModel.__str__.__doc__)
-        self.assertIsNotNone(BaseModel.save.__doc__)
-        self.assertIsNotNone(BaseModel.to_dict.__doc__)
-
-    def test_method_BaseModel(self):
-        '''test'''
-        self.assertTrue(hasattr(BaseModel, '__init__'))
-        self.assertTrue(hasattr(BaseModel, 'save'))
-        self.assertTrue(hasattr(BaseModel, 'to_dict'))
-
-    def test_init_BaseModel(self):
-        '''test'''
-        self.assertTrue(isinstance(self.base, BaseModel))
-
-    def test_save_BaesModel(self):
-        '''test'''
-        self.base.save()
-        self.assertNotEqual(self.base.created_at, self.base.updated_at)
-
-    def test_to_dict_BaseModel(self):
-        '''test'''
-        base_dict = self.base.to_dict()
-        self.assertEqual(self.base.__class__.__name__, 'BaseModel')
-        self.assertIsInstance(base_dict['created_at'], str)
-        self.assertIsInstance(base_dict['updated_at'], str)
-
+    def test_to_json(self):
+        '''tests to_json method with diffs in output & in-memory objects'''
+        m1_dict = self.model1.to_json()
+        m2_dict = self.model2.to_json()
+        self.assertTrue(hasattr(m1_dict, '__class__'))
+        self.assertTrue(m1_dict != self.model1.__dict__)
+        self.assertEqual(m1_dict['id'], self.model1.__dict__['id'])
+        self.assertNotEqual(m1_dict['created_at'],
+                            self.model1.__dict__['created_at'])
+        self.assertNotEqual(type(m1_dict['created_at']),
+                            type(self.model1.__dict__['created_at']))
+        self.assertNotEqual(m1_dict, m2_dict)
 
 if __name__ == '__main__':
     '''__name__'''
