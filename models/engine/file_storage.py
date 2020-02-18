@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 '''File Storage file'''
 from models.base_model import BaseModel
-from models.user import User
 import json
-
+from models.user import User
 
 class FileStorage():
     '''FileStorage Class'''
@@ -42,5 +41,3 @@ class FileStorage():
                 self.__objects[key] = value
         except FileNotFoundError:
             pass
-
-

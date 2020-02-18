@@ -3,7 +3,6 @@
 import cmd
 from models import *
 
-
 class HBNBCommand(cmd.Cmd):
     '''Class HBNB Command'''
     prompt = "(hbnb) "
