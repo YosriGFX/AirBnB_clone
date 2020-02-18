@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
+'''Base Model file'''
 import uuid
 import models
 from datetime import datetime
-'''Base Model file'''
 
 
 class BaseModel:
