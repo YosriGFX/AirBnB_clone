@@ -10,4 +10,12 @@ git add .
 git commit -m "[init] -  <YosriGFX> "
 git push
 clear
-echo "\n\n\n\n \t Done. Mr Yosri \t \n\n\n\n"
+echo "\
+ ________________________________\n\
+/ \t\t\t\t \ \n\
+\ \t\t\t\t / \n\
+\ \t Done. Mr Yosri \t / \n\
+- \t------------------\t - \n\
+/ \tAll Right Reserved \t \ \n\
+/ \t\t\t\t \ \n\
+\________________________________/ \n"
