@@ -17,12 +17,12 @@ class BaseModel:
         if kwargs:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
-                    self.__dict__[key] = datetime.strptime(
+                    value = datetime.strptime(
                                                             value,
                                                             BaseModel.forme
                                                         )
-                else:
-                    self.__dict__[key] = value
+                if key != "__class__":
+                    setattr(self, key, value)
         else:
             models.storage.new(self)
 
