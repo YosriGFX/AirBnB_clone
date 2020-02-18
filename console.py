@@ -99,6 +99,27 @@ class HBNBCommand(cmd.Cmd):
         except KeyError:
             print("** no instance found **")
 
+    def do_all(self, line):
+        '''All'''
+        loader = storage.all()
+        global_list = []
+        if line:
+            try:
+                Model_name = line.split(" ")[0]
+                if Model_name in self.class_dic:
+                    for cont in loader:
+                        if cont.split(".")[0] == Model_name:
+                            global_list.append(str(loader[cont]))
+                    print(global_list)
+                else:
+                    raise NameError
+            except NameError:
+                print("** class doesn't exist **")
+        else:
+            for cont in loader:
+                global_list.append(str(loader[cont]))
+            print(global_list)
+
     def help_quit(self):
         '''HELP_quit'''
         print("Quit command to exit the program\n")
@@ -126,10 +147,22 @@ class HBNBCommand(cmd.Cmd):
 
     def help_destroy(self):
         print(
-                "destroy Command to deletes an instance and save changes\
+                "Destroy Command to deletes an instance and save changes\
                 \nbased on the <Model_name> and <id>\
                 \nExample:\
                 \n> destroy <Model_name> <id>\
+                \n"
+        )
+
+    def help_all(self):
+        print(
+                "All Command to Prints all string representation of all\
+                \ninstances based or not on the <Model_name>.\
+                \nExample:\
+                \n> all\
+                \n\tto print all models\
+                \n> all <Model_name>\
+                \n\tto print all <Model_name>\
                 \n"
         )
 
