@@ -2,6 +2,8 @@ rm -r __pycache__
 rm -r models/__pycache__
 rm -r models/engine/__pycache__
 rm -r tests/__pycache__
+rm -r tests/test_models/__pycache__
+
 chmod -R 777 *
 git add .
 git commit -m "[init] -  <YosriGFX> "
