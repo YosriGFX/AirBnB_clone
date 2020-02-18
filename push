@@ -11,11 +11,10 @@ git commit -m "[init] -  <YosriGFX> "
 git push
 clear
 echo "\
- \\\\\\\\\\\|///////////\n\
-/ \t\t\t\t \ \n\
-\ \t\t\t\t / \n\
-\ \t Done. Mr Yosri \t / \n\
-- \t------------------\t - \n\
-/ \tAll Right Reserved \t \ \n\
-/ \t\t\t\t \ \n\
-\________________________________/ \n"
+/\.\.\.\.\.\.\.\.|././././././././\ \n\
+\.\t\t\t\t ./ \n\
+\.\t Done Mr. Yosri \t ./ \n\
+-.\t------------------\t .- \n\
+/.\tAll Right Reserved\t .\ \n\
+/.\t\t\t\t .\ \n\
+\/./././././././.|.\.\.\.\.\.\.\.\/ \n"
