@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 from models.base_model import BaseModel
+import json
 '''File Storage file'''
 
-class FileStorage(BaseModel):
+class FileStorage():
     '''FileStorage Class'''
 
     def __init__(self):
@@ -16,4 +17,16 @@ class FileStorage(BaseModel):
 
     def new(self, obj):
         '''new obj'''
-        self.__objects = "%s" % (obj.__class__.__name__, obj.id)
+        self.__objects[
+            "{}.{}".format(obj.__class__.__name__, obj.id)
+            ] = obj
+
+    def save(self):
+        '''save json'''
+        dict_exp = {
+            obj: self.__objects[obj].to_dict()\
+            for obj in self.__objects.keys()
+        }
+        json_exp = open(self.__file_path, "w")
+        json_exp.write(json.dumps(dict_exp))
+        json_exp.close()

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import uuid
+import models
 from datetime import datetime
 '''Base Model file'''
 
@@ -22,6 +23,8 @@ class BaseModel:
                                                         )
                 else:
                     self.__dict__[key] = value
+        else:
+            models.storage.new(self)
 
     def __str__(self):
         '''Return String'''
@@ -34,10 +37,12 @@ class BaseModel:
     def save(self):
         '''Save function'''
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         '''To dictionary function'''
-        self.created_at = self.created_at.isoformat()
-        self.updated_at = self.updated_at.isoformat()
-        self.__dict__['__class__'] = self.__class__.__name__
-        return (self.__dict__)
+        new_dic = self.__dict__.copy()
+        new_dic['created_at'] = self.created_at.isoformat()
+        new_dic['updated_at'] = self.updated_at.isoformat()
+        new_dic['__class__'] = self.__class__.__name__
+        return (new_dic)
