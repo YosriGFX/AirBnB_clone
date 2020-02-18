@@ -17,19 +17,27 @@ class TestUser(unittest.TestCase):
         """ Tests for creating instances """
         self.assertTrue(self.a_inst.id != self.b_inst.id)
         self.assertFalse(hasattr(self.a_inst, "updated_at"))
+        self.assertTrue(hasattr(self.a_inst, "email"))
         self.assertTrue(hasattr(self.b_inst, "email"))
+        self.assertTrue(hasattr(self.a_inst, "password"))
         self.assertTrue(hasattr(self.b_inst, "password"))
+        self.assertTrue(hasattr(self.a_inst, "first_name"))
         self.assertTrue(hasattr(self.b_inst, "first_name"))
         self.assertTrue(hasattr(self.a_inst, "last_name"))
+        self.assertTrue(hasattr(self.b_inst, "last_name"))
         self.assertTrue(self.a_inst.created_at != self.b_inst.created_at)
 
     def test_types(self):
         """ Testing for types """
         self.assertTrue(type(self.a_inst.created_at) is datetime.datetime)
         self.assertTrue(type(self.a_inst.first_name) is str)
+        self.assertTrue(type(self.b_inst.first_name) is str)
         self.assertTrue(type(self.a_inst.email) is str)
+        self.assertTrue(type(self.b_inst.email) is str)
         self.assertTrue(type(self.a_inst.last_name) is str)
+        self.assertTrue(type(self.b_inst.last_name) is str)
         self.assertTrue(type(self.a_inst.password) is str)
+        self.assertTrue(type(self.b_inst.password) is str)
         a_json = self.a_inst.to_json()
         self.assertTrue(type(a_json["created_at"]) is str)
 
