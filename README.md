@@ -50,7 +50,7 @@ Example:
 (hbnb) all <Model_name>                
     to print all <Model_name> 
 ```
-## help quit
+## Quit Command
 > Quit command to exit the program
 Example:
 ```
