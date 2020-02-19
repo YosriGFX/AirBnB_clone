@@ -1,8 +1,14 @@
 #!/usr/bin/python3
 '''console file'''
 import cmd
-from models import *
-
+from models import storage
+from models.user import User
+from models.city import City
+from models.place import Place
+from models.state import State
+from models.review import Review
+from models.amenity import Amenity
+from models.base_model import BaseModel
 
 class HBNBCommand(cmd.Cmd):
     '''Class HBNB Command'''
