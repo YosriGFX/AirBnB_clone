@@ -5,7 +5,7 @@
  by Guillaume, CTO at Holberton school
 
 AirBnB clone
-![alt text](https://i.ibb.co/GPsTnX2/65f4a1dd9c51265f49d0.png)
+![alt text](https://pbs.twimg.com/media/ERJjj6PX0AE-qL_?format=jpg&name=large)
 
 # Background Context
 # Welcome to the AirBnB clone project! (The Holberton B&B)
