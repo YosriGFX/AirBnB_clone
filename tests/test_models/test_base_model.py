@@ -43,6 +43,8 @@ class TestBaseModel(unittest.TestCase):
         m1u_saved = self.model2.updated_at
         self.assertFalse(m1u == m1u_saved)
 
+    def test_to_dic(self):
+        '''tests to_json method with diffs in output & in-memory objects'''
 
 if __name__ == '__main__':
     '''__name__'''
