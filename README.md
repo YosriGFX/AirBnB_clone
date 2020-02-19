@@ -56,3 +56,8 @@ Example:
 ```
 (hbnb) quit
 ```
+##
+**Proudly written by:**
+- **[Yosri Ghorbel](https://github.com/YosriGFX)**
+- **[Hafed Inoubli](https://github.com/inoublii)**
+##
