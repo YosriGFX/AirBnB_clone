@@ -10,6 +10,7 @@ from models.review import Review
 from models.amenity import Amenity
 from models.base_model import BaseModel
 
+
 class HBNBCommand(cmd.Cmd):
     '''Class HBNB Command'''
     prompt = "(hbnb) "
