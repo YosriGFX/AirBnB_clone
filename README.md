@@ -4,16 +4,6 @@
 
  by Guillaume, CTO at Holberton school
 
- Project to be done in teams of 2 people (your team: Hafed Inoubli, Yosri Ghorbel
-
- Ongoing project - started 02-13-2020, must end by 02-20-2020 (in 3 days) - you're done with 0% of tasks.
-
- Manual QA review must be done (request it when you are done with the project)
-
- QA review fully automated.
-
-For this project, students are expected to look at this concept:
-
 AirBnB clone
 ![alt text](https://i.ibb.co/GPsTnX2/65f4a1dd9c51265f49d0.png)
 

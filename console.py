@@ -120,6 +120,60 @@ class HBNBCommand(cmd.Cmd):
                 global_list.append(str(loader[cont]))
             print(global_list)
 
+    def do_update(self, line):
+        '''update an instance'''
+        try:
+            if line:
+                arg_line = line.split(" ")
+                ClassName = arg_line[0]
+                if ClassName in self.class_dic:
+                    if len(arg_line) > 1:
+                        current_id = arg_line[1]
+                        full_id = "{}.{}".format(ClassName, current_id)
+                        all_objs = storage.all()
+                        if full_id in all_objs:
+                            if len(arg_line) > 2:
+                                if len(arg_line) > 3:
+                                    attribute_name = arg_line[2]
+                                    attribute_value = arg_line[3]
+                                    try:
+                                        all_objs[
+                                                    full_id
+                                        ].__dict__[
+                                                    attribute_name
+                                        ] = eval(attribute_value)
+                                    except Exception:
+                                        all_objs[
+                                                    full_id
+                                        ].__dict__[
+                                                    attribute_name
+                                        ] = attribute_value
+                                        all_objs[full_id].save()
+                                else:
+                                    raise ValueError
+                            else:
+                                raise AttributeError
+                        else:
+                            raise KeyError
+                    else:
+                        raise IndexError
+                else:
+                    raise NameError
+            else:
+                raise SyntaxError
+        except SyntaxError:
+            print("** class name missing **")
+        except NameError:
+            print("** class doesn't exist **")
+        except IndexError:
+            print("** instance id missing **")
+        except KeyError:
+            print("** no instance found **")
+        except AttributeError:
+            print("** attribute name missing **")
+        except ValueError:
+            print("** value missing **")
+
     def help_quit(self):
         '''HELP_quit'''
         print("Quit command to exit the program\n")
@@ -129,6 +183,7 @@ class HBNBCommand(cmd.Cmd):
         print("Ctrl+D command to exit the program\n")
 
     def help_create(self):
+        '''HELP_CREATE'''
         print(
                 "Create Command to create a new instance of <Model_name>\
                 \nExample:\
@@ -137,6 +192,7 @@ class HBNBCommand(cmd.Cmd):
         )
 
     def help_show(self):
+        '''HELP_SHOW'''
         print(
                 "Show Command to prints the string representation of an\
                 \ninstance based on the <Model_name> and <id>\
@@ -146,6 +202,7 @@ class HBNBCommand(cmd.Cmd):
         )
 
     def help_destroy(self):
+        '''HELP_DESTROY'''
         print(
                 "Destroy Command to deletes an instance and save changes\
                 \nbased on the <Model_name> and <id>\
@@ -155,6 +212,7 @@ class HBNBCommand(cmd.Cmd):
         )
 
     def help_all(self):
+        '''HELP_ALL'''
         print(
                 "All Command to Prints all string representation of all\
                 \ninstances based or not on the <Model_name>.\
@@ -163,6 +221,16 @@ class HBNBCommand(cmd.Cmd):
                 \n\tto print all models\
                 \n> all <Model_name>\
                 \n\tto print all <Model_name>\
+                \n"
+        )
+
+    def help_update(self):
+        '''HELP_UPDATE'''
+        print(
+                "Update Command t Updates an instance based on the <Model_name>\
+                \nand <id> by adding or updating attribute.\
+                \nExample:\
+                \n> update <Model_name> <id> <attribute name> <value>\
                 \n"
         )
 
