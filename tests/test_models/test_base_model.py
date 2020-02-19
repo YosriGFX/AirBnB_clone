@@ -4,6 +4,7 @@ import unittest
 import os
 from models import *
 import pep8
+import datetime
 
 
 class TestBaseModel(unittest.TestCase):
@@ -19,7 +20,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(hasattr(self.model1, 'id'))
         self.assertTrue(hasattr(self.model1, '__class__'))
         self.assertTrue(hasattr(self.model1, 'created_at'))
-        self.assertFalse(hasattr(self.model1, 'updated_at'))
+        self.assertTrue(hasattr(self.model1, 'updated_at'))
         self.assertTrue(hasattr(self.model2, 'updated_at'))
         self.assertTrue(self.model1.id != self.model2.id)
         m1c = self.model1.created_at
@@ -42,18 +43,6 @@ class TestBaseModel(unittest.TestCase):
         m1u_saved = self.model2.updated_at
         self.assertFalse(m1u == m1u_saved)
 
-    def test_to_json(self):
-        '''tests to_json method with diffs in output & in-memory objects'''
-        m1_dict = self.model1.to_json()
-        m2_dict = self.model2.to_json()
-        self.assertTrue(hasattr(m1_dict, '__class__'))
-        self.assertTrue(m1_dict != self.model1.__dict__)
-        self.assertEqual(m1_dict['id'], self.model1.__dict__['id'])
-        self.assertNotEqual(m1_dict['created_at'],
-                            self.model1.__dict__['created_at'])
-        self.assertNotEqual(type(m1_dict['created_at']),
-                            type(self.model1.__dict__['created_at']))
-        self.assertNotEqual(m1_dict, m2_dict)
 
 if __name__ == '__main__':
     '''__name__'''

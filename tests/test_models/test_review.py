@@ -16,7 +16,7 @@ class TestReview(unittest.TestCase):
     def test_setup(self):
         """ Tests for creating instances """
         self.assertTrue(self.a_inst.id != self.b_inst.id)
-        self.assertFalse(hasattr(self.a_inst, "updated_at"))
+        self.assertTrue(hasattr(self.a_inst, "updated_at"))
         self.assertTrue(hasattr(self.a_inst, "place_id"))
         self.assertTrue(hasattr(self.b_inst, "place_id"))
         self.assertTrue(hasattr(self.a_inst, "user_id"))
@@ -31,8 +31,6 @@ class TestReview(unittest.TestCase):
         self.assertTrue(type(self.a_inst.place_id) is str)
         self.assertTrue(type(self.a_inst.user_id) is str)
         self.assertTrue(type(self.a_inst.text) is str)
-        a_json = self.a_inst.to_json()
-        self.assertTrue(type(a_json["created_at"]) is str)
 
     def test_save(self):
         """ Testing updating  """

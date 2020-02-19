@@ -16,7 +16,7 @@ class TestUser(unittest.TestCase):
     def test_setup(self):
         """ Tests for creating instances """
         self.assertTrue(self.a_inst.id != self.b_inst.id)
-        self.assertFalse(hasattr(self.a_inst, "updated_at"))
+        self.assertTrue(hasattr(self.a_inst, "updated_at"))
         self.assertTrue(hasattr(self.a_inst, "email"))
         self.assertTrue(hasattr(self.b_inst, "email"))
         self.assertTrue(hasattr(self.a_inst, "password"))
@@ -38,8 +38,6 @@ class TestUser(unittest.TestCase):
         self.assertTrue(type(self.b_inst.last_name) is str)
         self.assertTrue(type(self.a_inst.password) is str)
         self.assertTrue(type(self.b_inst.password) is str)
-        a_json = self.a_inst.to_json()
-        self.assertTrue(type(a_json["created_at"]) is str)
 
     def test_save(self):
         """ Testing updating  """

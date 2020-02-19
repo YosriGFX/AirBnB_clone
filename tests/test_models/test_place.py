@@ -16,7 +16,7 @@ class TestPlace(unittest.TestCase):
     def test_setup(self):
         """ Tests for creating instances """
         self.assertTrue(self.a_inst.id != self.b_inst.id)
-        self.assertFalse(hasattr(self.a_inst, "updated_at"))
+        self.assertTrue(hasattr(self.a_inst, "updated_at"))
         self.assertTrue(hasattr(self.b_inst, "updated_at"))
         self.assertTrue(hasattr(self.a_inst, "name"))
         self.assertTrue(hasattr(self.b_inst, "name"))
@@ -36,8 +36,8 @@ class TestPlace(unittest.TestCase):
         self.assertTrue(hasattr(self.b_inst, "price_by_night"))
         self.assertTrue(hasattr(self.a_inst, "latitude"))
         self.assertTrue(hasattr(self.b_inst, "longitude"))
-        self.assertTrue(hasattr(self.a_inst, "amenities"))
-        self.assertTrue(hasattr(self.b_inst, "amenities"))
+        self.assertFalse(hasattr(self.a_inst, "amenities"))
+        self.assertFalse(hasattr(self.b_inst, "amenities"))
         self.assertTrue(self.a_inst.created_at != self.b_inst.created_at)
 
     def test_types(self):
@@ -50,9 +50,6 @@ class TestPlace(unittest.TestCase):
         self.assertTrue(type(self.a_inst.price_by_night) is int)
         self.assertTrue(type(self.a_inst.latitude) is float)
         self.assertTrue(type(self.a_inst.longitude) is float)
-        self.assertTrue(type(self.a_inst.amenities) is list)
-        a_json = self.a_inst.to_json()
-        self.assertTrue(type(a_json["created_at"]) is str)
 
     def test_save(self):
         """ Testing updating  """

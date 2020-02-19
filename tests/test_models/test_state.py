@@ -16,7 +16,7 @@ class TestState(unittest.TestCase):
     def test_setup(self):
         """ Tests for creating instances """
         self.assertTrue(self.a_inst.id != self.b_inst.id)
-        self.assertFalse(hasattr(self.a_inst, "updated_at"))
+        self.assertTrue(hasattr(self.a_inst, "updated_at"))
         self.assertTrue(hasattr(self.a_inst, "name"))
         self.assertTrue(hasattr(self.b_inst, "name"))
         self.assertTrue(self.a_inst.created_at != self.b_inst.created_at)
@@ -25,8 +25,6 @@ class TestState(unittest.TestCase):
         """ Testing for types """
         self.assertTrue(type(self.a_inst.created_at) is datetime.datetime)
         self.assertTrue(type(self.a_inst.name) is str)
-        a_json = self.a_inst.to_json()
-        self.assertTrue(type(a_json["created_at"]) is str)
 
     def test_save(self):
         """ Testing updating  """

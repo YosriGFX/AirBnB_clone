@@ -35,7 +35,7 @@ class TestFileStorage(unittest.TestCase):
         '''teardown'''
         try:
             os.remove('file.json')
-        except Exception:
+        except:
             pass
 
     def test_pep8_FileStorage(self):
