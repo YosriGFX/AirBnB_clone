@@ -42,9 +42,9 @@ class FileStorage():
         try:
             json_reload = open(self.__file_path, "r")
             json_old = json.loads(json_reload.read())
+            json_reload.close()
             for key, value in json_old.items():
                 value = eval(value["__class__"])(**value)
                 self.__objects[key] = value
-            json_reload.close()
         except FileNotFoundError:
             pass
