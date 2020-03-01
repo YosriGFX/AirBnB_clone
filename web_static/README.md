@@ -1,7 +1,7 @@
 
 ## Final product
 
-![](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/8-index.png)
+![](https://pbs.twimg.com/media/ESDUi3PXsAAe1Vt?format=jpg&name=4096x4096)
 
 ##
 **Proudly written by:**
