@@ -61,3 +61,5 @@ Example:
 - **[Yosri Ghorbel](https://github.com/YosriGFX)**
 - **[Hafed Inoubli](https://github.com/inoublii)**
 ##
+
+> Copyright © 2021 [Holberton School](https://www.holbertonschool.com). All rights reserved.
